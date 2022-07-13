@@ -6,27 +6,27 @@ import pygame
 from pygame.locals import *
 
 ### 定数
-R_H_SIZE = 10       # ラケット縦サイズ
-R_W_SIZE = 100      # ラケット横サイズ
+R_H_SIZE = 20       # ラケット縦サイズ
+R_W_SIZE = 200      # ラケット横サイズ
 R_B_POS  = 30       # ラケット縦位置
 BAL_SIZE = 18       # ボールサイズ
-B_X_NUM  = 10       # ブロック横列の数
-B_Y_NUM  = 5        # ブロック縦列の数
-B_H_SIZE = 15       # ブロック縦サイズ
-B_W_SIZE = 35       # ブロック横サイズ
-B_TOP    = 50       # ブロック上余白位置
-B_LEFT   = 10       # ブロック左余白位置
-B_BLANK  = 3        # ブロック間余白
-F_RATE   = 60       # フレームレート
+B_X_NUM  = 20       # ブロック横列の数
+B_Y_NUM  = 10       # ブロック縦列の数
+B_H_SIZE = 20       # ブロック縦サイズ
+B_W_SIZE = 45       # ブロック横サイズ
+B_TOP    = 30       # ブロック上余白位置
+B_LEFT   = 20       # ブロック左余白位置
+B_BLANK  = 5        # ブロック間余白
+F_RATE   = 120      # フレームレート
 K_REPEAT = 20       # キーリピート発生間隔
-RKT_SPD  = 10       # ラケット移動速度
-BAL_SPD  = 5       # ボール移動速度
+RKT_SPD  = 30       # ラケット移動速度
+BAL_SPD  = 8       # ボール移動速度
 F_SIZE   = 60       # フォントサイズ
 S_TIME   = 2        # START画面時間(秒)
 E_TIME   = 4        # CLEAR画面時間(秒)
 
 ### 画面定義(X軸,Y軸,横,縦)
-SURFACE  = Rect(0, 0, 400, 640) # 画面サイズ
+SURFACE  = Rect(0, 0, 600, 840) # 画面サイズ
 
 ############################
 ### ラケットクラス
@@ -153,7 +153,7 @@ class Ball(pygame.sprite.Sprite):
             ### GAME OVERを表示
             font = pygame.font.Font(None, F_SIZE)
             text = font.render("GAME OVER", True, (255,31,31))
-            surface.blit(text, [73,299])
+            surface.blit(text, [230,2500])
 
         ### ブロック接触リスト取得(接触したブロックは削除)
         blocks_list = pygame.sprite.spritecollide(self, self.blocks, True)
@@ -193,7 +193,7 @@ class Ball(pygame.sprite.Sprite):
                 ### GAME CLEARを表示
                 font = pygame.font.Font(None, F_SIZE)
                 text = font.render("GAME CLEAR", True, (63,255,63))
-                surface.blit(text, [59,299])
+                surface.blit(text, [230,350])
                 pygame.display.update()
 
                 ### CLEAR画面時間
@@ -250,11 +250,11 @@ def main():
         for y in range(B_Y_NUM):    # ブロック縦
 
             ### ブロック作成
-            blocks.add(Block("block.png", x, y))
+            blocks.add(Block("gazo/block.png", x, y))
 
     ### スプライト作成
-    racket = Racket("racket.png")
-    ball   = Ball("ball.png", racket, blocks)
+    racket = Racket("gazo/racket.png")
+    ball   = Ball("gazo/ball.png", racket, blocks)
 
     ### 時間オブジェクト生成
     clock = pygame.time.Clock()
@@ -269,7 +269,7 @@ def main():
     font = pygame.font.Font(None, F_SIZE)
     text = font.render("START", True, (96,96,255))
     surface.fill((0,0,0))
-    surface.blit(text, [133,299])
+    surface.blit(text, [230,350])
     pygame.display.update()
 
     ### 一時停止
