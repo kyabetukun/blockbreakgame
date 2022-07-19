@@ -7,9 +7,9 @@ from pygame.locals import *
 
 ### 定数
 R_H_SIZE = 20       # ラケット縦サイズ
-R_W_SIZE = 200      # ラケット横サイズ
+R_W_SIZE = 100      # ラケット横サイズ
 R_B_POS  = 30       # ラケット縦位置
-BAL_SIZE = 18       # ボールサイズ
+BAL_SIZE = 200       # ボールサイズ
 B_X_NUM  = 20       # ブロック横列の数
 B_Y_NUM  = 10       # ブロック縦列の数
 B_H_SIZE = 20       # ブロック縦サイズ
@@ -19,8 +19,8 @@ B_LEFT   = 20       # ブロック左余白位置
 B_BLANK  = 5        # ブロック間余白
 F_RATE   = 120      # フレームレート
 K_REPEAT = 20       # キーリピート発生間隔
-RKT_SPD  = 30       # ラケット移動速度
-BAL_SPD  = 8       # ボール移動速度
+RKT_SPD  = 35     # ラケット移動速度
+BAL_SPD  = 2# ボール移動速度
 F_SIZE   = 60       # フォントサイズ
 S_TIME   = 2        # START画面時間(秒)
 E_TIME   = 4        # CLEAR画面時間(秒)
@@ -153,7 +153,7 @@ class Ball(pygame.sprite.Sprite):
             ### GAME OVERを表示
             font = pygame.font.Font(None, F_SIZE)
             text = font.render("GAME OVER", True, (255,31,31))
-            surface.blit(text, [230,2500])
+            surface.blit(text, [180,300])
 
         ### ブロック接触リスト取得(接触したブロックは削除)
         blocks_list = pygame.sprite.spritecollide(self, self.blocks, True)
@@ -254,7 +254,7 @@ def main():
 
     ### スプライト作成
     racket = Racket("gazo/racket.png")
-    ball   = Ball("gazo/ball.png", racket, blocks)
+    ball   = Ball("gazo/roa.png", racket, blocks)
 
     ### 時間オブジェクト生成
     clock = pygame.time.Clock()
