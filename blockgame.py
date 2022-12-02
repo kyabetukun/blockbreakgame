@@ -254,7 +254,7 @@ def main():
 
     ### スプライト作成
     racket = Racket("gazo/racket.png")
-    ball   = Ball("gazo/roa.png", racket, blocks)
+    ball   = Ball("gazo/ball.png", racket, blocks)
 
     ### 時間オブジェクト生成
     clock = pygame.time.Clock()
